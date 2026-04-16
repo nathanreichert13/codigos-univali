@@ -1,0 +1,19 @@
+PARTE 2 - SOLUÇÃO COM O PARADIGMA ORIENTADO A OBJETOS (POO)
+
+No paradigma orientado a objetos, o programa é organizado em
+classes e objetos que representam elementos do problema.
+
+Nesse caso, pode ser criada uma classe chamada Paciente ou IMC.
+Essa classe pode possuir atributos como peso, altura e imc.
+
+Também são definidos métodos (funções da classe), como um método
+para calcular o IMC e outro para exibir a classificação.
+
+O objeto criado a partir da classe irá armazenar os dados do
+paciente e utilizar os métodos para realizar o cálculo.
+
+Assim, o objeto recebe o peso e a altura, calcula o IMC e
+determina a classificação correspondente.
+
+Dessa forma, o problema é resolvido organizando os dados e
+comportamentos dentro de uma classe, seguindo o modelo da POO.

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AC/DC – PWR UP TOUR · Brasil 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:   #080808;
+      --charcoal:#141414;
+      --iron:    #222222;
+      --red:     #cc1111;
+      --hot-red: #ff2222;
+      --yellow:  #f0c010;
+      --white:   #f0ebe0;
+      --gray:    #666;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow Condensed', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--black);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1.5rem;
+      overflow: hidden;
+    }
+
+    /* diagonal red slash behind title */
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 55%;
+      background: var(--red);
+      top: 50%;
+      left: -50%;
+      transform: translateY(-50%) rotate(-4deg);
+      z-index: 0;
+      opacity: 0.08;
+    }
+
+    /* lightning bolt SVG bg */
+    .hero-bolt {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(70vw, 500px);
+      opacity: 0.04;
+      z-index: 0;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.04; transform: translate(-50%,-50%) scale(1); }
+      50%       { opacity: 0.07; transform: translate(-50%,-50%) scale(1.05); }
+    }
+
+    .hero-tag {
+      position: relative;
+      z-index: 1;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: smash 0.5s 0.1s ease forwards;
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(6rem, 22vw, 16rem);
+      line-height: 0.85;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      text-shadow:
+        4px 4px 0 var(--red),
+        8px 8px 0 rgba(204,17,17,0.3);
+      opacity: 0;
+      animation: smash 0.6s 0.3s cubic-bezier(0.2,1.4,0.5,1) forwards;
+    }
+
+    .hero h1 .slash {
+      color: var(--red);
+      display: inline-block;
+      animation: zap 0.8s 1s ease forwards;
+    }
+
+    @keyframes zap {
+      0%,100% { color: var(--red); }
+      50%      { color: var(--yellow); text-shadow: 0 0 30px var(--yellow); }
+    }
+
+    .hero-sub {
+      position: relative;
+      z-index: 1;
+      margin-top: 1.5rem;
+      font-size: clamp(1rem, 3vw, 1.6rem);
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(240,235,224,0.55);
+      opacity: 0;
+      animation: smash 0.5s 0.6s ease forwards;
+    }
+
+    .hero-date {
+      position: relative;
+      z-index: 1;
+      margin-top: 2rem;
+      display: inline-block;
+      border: 2px solid var(--red);
+      padding: 0.7rem 2.5rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0;
+      animation: smash 0.5s 0.8s ease forwards;
+    }
+
+    .hero-date strong {
+      color: var(--yellow);
+    }
+
+    .btn-rock {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: 1.1rem 3.5rem;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      opacity: 0;
+      animation: smash 0.5s 1s ease forwards;
+    }
+
+    .btn-rock:hover {
+      background: var(--hot-red);
+      transform: scale(1.04) skewX(-1deg);
+      box-shadow: 0 0 40px rgba(255,34,34,0.5);
+    }
+
+    .btn-outline-rock {
+      background: transparent;
+      border: 2px solid var(--red);
+      color: var(--red);
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+
+    .btn-outline-rock:hover {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    @keyframes smash {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      height: 6px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--red) 0px, var(--red) 40px,
+        var(--black) 40px, var(--black) 50px
+      );
+    }
+
+    /* ── BAND ── */
+    .band {
+      background: var(--charcoal);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 65vh;
+    }
+
+    .band-image {
+      background: var(--iron);
+      position: relative;
+      overflow: hidden;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .band-image-inner {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      background:
+        linear-gradient(160deg, #080808 0%, #1a0000 50%, #cc1111 130%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* giant lightning bolt as illustration */
+    .bolt-art {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16rem;
+      color: var(--red);
+      opacity: 0.25;
+      line-height: 1;
+      user-select: none;
+      text-shadow: 0 0 80px rgba(204,17,17,0.6);
+      transform: rotate(-10deg);
+    }
+
+    .band-year-badge {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      color: rgba(240,235,224,0.06);
+      line-height: 1;
+    }
+
+    .band-text {
+      padding: 4rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-left: 4px solid var(--red);
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+
+    .band-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .band-text h2 span {
+      color: var(--yellow);
+    }
+
+    .band-text p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(240,235,224,0.55);
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    /* ── STATS BAR ── */
+    .stats {
+      background: var(--red);
+      display: flex;
+      justify-content: center;
+    }
+
+    .stat {
+      flex: 1;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      border-right: 1px solid rgba(0,0,0,0.2);
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(240,235,224,0.65);
+      margin-top: 0.2rem;
+    }
+
+    /* ── SETLIST ── */
+    .setlist {
+      background: var(--black);
+      padding: 6rem 1.5rem;
+      text-align: center;
+    }
+
+    .setlist h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--white);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+    }
+
+    .setlist .sub {
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 3.5rem;
+    }
+
+    .songs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .song-card {
+      background: var(--charcoal);
+      padding: 2rem 1.5rem;
+      text-align: left;
+      border-left: 4px solid transparent;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .song-card::after {
+      content: attr(data-num);
+      position: absolute;
+      right: -0.5rem;
+      bottom: -1rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 6rem;
+      color: rgba(255,255,255,0.03);
+      line-height: 1;
+    }
+
+    .song-card:hover {
+      border-left-color: var(--red);
+      background: #1c1c1c;
+      transform: translateX(4px);
+    }
+
+    .song-num {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .song-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .song-desc {
+      font-size: 0.82rem;
+      color: var(--gray);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .reviews-section {
+      background: var(--charcoal);
+      padding: 6rem 1.5rem;
+      text-align: center;
+    }
+
+    .reviews-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .reviews-section .sub {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 3rem;
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .review-card {
+      background: var(--iron);
+      padding: 2rem;
+      text-align: left;
+      border-top: 3px solid var(--red);
+      position: relative;
+    }
+
+    .review-card::before {
+      content: '"';
+      position: absolute;
+      top: -0.5rem;
+      left: 1.5rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      color: var(--red);
+      line-height: 1;
+      opacity: 0.4;
+    }
+
+    .review-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(240,235,224,0.7);
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .reviewer {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--yellow);
+      text-transform: uppercase;
+    }
+
+    /* ── TICKETS ── */
+    .tickets {
+      background: var(--black);
+      padding: 6rem 1.5rem;
+      text-align: center;
+    }
+
+    .tickets h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .tickets .sub {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 3.5rem;
+    }
+
+    .ticket-plans {
+      display: flex;
+      gap: 2px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .ticket-card {
+      background: var(--charcoal);
+      padding: 2.5rem 2rem;
+      flex: 1;
+      min-width: 220px;
+      max-width: 300px;
+      text-align: center;
+      border-top: 4px solid var(--iron);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .ticket-card.featured {
+      border-top-color: var(--red);
+      background: #1a0606;
+    }
+
+    .ticket-card:hover {
+      border-top-color: var(--red);
+      transform: translateY(-6px);
+    }
+
+    .ticket-tier {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+
+    .ticket-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .ticket-price sup {
+      font-size: 1.5rem;
+      vertical-align: super;
+      color: var(--yellow);
+    }
+
+    .ticket-period {
+      font-size: 0.72rem;
+      color: var(--gray);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+
+    .ticket-perks {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    .ticket-perks li {
+      font-size: 0.88rem;
+      color: rgba(240,235,224,0.55);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 300;
+    }
+
+    .ticket-perks li::before {
+      content: '⚡';
+      font-size: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    /* ── CTA FINAL ── */
+    .cta-section {
+      background: var(--red);
+      padding: 6rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: 'AC/DC';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-8deg);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 25vw;
+      color: rgba(0,0,0,0.12);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .cta-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+
+    .cta-section p {
+      font-size: 1rem;
+      color: rgba(240,235,224,0.7);
+      letter-spacing: 0.1em;
+      margin-bottom: 2.5rem;
+      position: relative;
+      font-weight: 300;
+    }
+
+    .cta-form {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .cta-form input {
+      padding: 1rem 1.5rem;
+      border: 2px solid rgba(0,0,0,0.3);
+      border-bottom: 2px solid var(--black);
+      background: rgba(0,0,0,0.25);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      width: 260px;
+      outline: none;
+      clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    }
+
+    .cta-form input::placeholder { color: rgba(240,235,224,0.5); }
+    .cta-form input:focus { background: rgba(0,0,0,0.4); }
+
+    .btn-black {
+      background: var(--black);
+      color: var(--white);
+      animation: none;
+      opacity: 1;
+      margin-top: 0;
+    }
+
+    .btn-black:hover {
+      background: #1a1a1a;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      border-top: 2px solid var(--iron);
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--red);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--gray);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .band { grid-template-columns: 1fr; }
+      .band-text { border-left: none; border-top: 4px solid var(--red); padding: 3rem 1.5rem; }
+      .stats { flex-wrap: wrap; }
+      .stat { min-width: 50%; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.2); }
+      .hero h1 { font-size: clamp(5rem, 25vw, 10rem); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- Giant lightning bolt bg -->
+    <svg class="hero-bolt" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="120,0 60,180 110,180 80,400 160,160 105,160" fill="white"/>
+    </svg>
+
+    <p class="hero-tag">⚡ PWR UP World Tour · Brasil 2025 ⚡</p>
+    <h1>AC<span class="slash">/</span>DC</h1>
+    <p class="hero-sub">Pwr Up Tour · Ao Vivo em São Paulo</p>
+    <div class="hero-date">
+      <strong>15 de Novembro</strong> &nbsp;·&nbsp; Estádio do Morumbi · São Paulo, SP
+    </div>
+    <a href="#ingressos" class="btn-rock">⚡ Garantir ingresso agora</a>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section class="band">
+    <div class="band-image">
+      <div class="band-image-inner">
+        <div class="bolt-art">⚡</div>
+        <div class="band-year-badge">1973</div>
+      </div>
+    </div>
+    <div class="band-text">
+      <p class="section-tag">// A Lenda do Rock</p>
+      <h2>50 anos de <span>puro</span> rock and roll</h2>
+      <p>Desde 1973, AC/DC redefine o que significa tocar hard rock. Com Angus Young na guitarra, a banda australiana nunca parou — e agora chegam ao Brasil com a turnê mais devastadora de todos os tempos.</p>
+      <p>A <strong style="color:var(--yellow)">PWR UP Tour</strong> traz uma produção colossal: palco gigante, pirotecnia, o canhão da Angus e um volume de som que você vai sentir no peito.</p>
+      <br>
+      <a href="#ingressos" class="btn-rock btn-outline-rock" style="margin-top:0;animation:none;opacity:1;">Ver ingressos →</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-number">50+</div>
+      <div class="stat-label">Anos de carreira</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">200M</div>
+      <div class="stat-label">Discos vendidos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">2h+</div>
+      <div class="stat-label">De show ao vivo</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">25</div>
+      <div class="stat-label">Hits clássicos</div>
+    </div>
+  </div>
+
+  <!-- SETLIST -->
+  <section class="setlist">
+    <p class="section-tag">// O que vem por aí</p>
+    <h2>Setlist</h2>
+    <p class="sub">Clássicos que você vai ouvir ao vivo</p>
+    <div class="songs-grid">
+      <div class="song-card" data-num="01">
+        <div class="song-num">Faixa 01</div>
+        <div class="song-title">Thunderstruck</div>
+        <div class="song-desc">O riff de abertura mais eletrizante da história do rock</div>
+      </div>
+      <div class="song-card" data-num="02">
+        <div class="song-num">Faixa 02</div>
+        <div class="song-title">Back in Black</div>
+        <div class="song-desc">Um dos álbuns mais vendidos de todos os tempos, ao vivo</div>
+      </div>
+      <div class="song-card" data-num="03">
+        <div class="song-num">Faixa 03</div>
+        <div class="song-title">Highway to Hell</div>
+        <div class="song-desc">O hino que define uma geração. Todo mundo canta junto</div>
+      </div>
+      <div class="song-card" data-num="04">
+        <div class="song-num">Faixa 04</div>
+        <div class="song-title">Hells Bells</div>
+        <div class="song-desc">O sino que anuncia o início de algo épico</div>
+      </div>
+      <div class="song-card" data-num="05">
+        <div class="song-num">Faixa 05</div>
+        <div class="song-title">You Shook Me All Night Long</div>
+        <div class="song-desc">Rock n' roll puro e irresistível do clássico Back in Black</div>
+      </div>
+      <div class="song-card" data-num="06">
+        <div class="song-num">Faixa 06</div>
+        <div class="song-title">Shoot to Thrill</div>
+        <div class="song-desc">Adrenalina do início ao fim — perfeita para abrir show</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section">
+    <p class="section-tag">// Quem foi sabe</p>
+    <h2>A plateia fala</h2>
+    <p class="sub">Depoimentos de quem já viveu a experiência</p>
+    <div class="reviews">
+      <div class="review-card">
+        <p class="review-text">"Meu corpo inteiro vibrou com o volume. A pirotecnia, o palco, o Angus correndo de um lado pro outro — é impossível não enlouquecer."</p>
+        <div class="reviewer">Ricardo M. · São Paulo</div>
+      </div>
+      <div class="review-card">
+        <p class="review-text">"Não é show, é uma experiência religiosa. Quando tocou Thunderstruck meu coração parou. 50 anos de banda e a energia é de 20 anos atrás."</p>
+        <div class="reviewer">Fernanda T. · Belo Horizonte</div>
+      </div>
+      <div class="review-card">
+        <p class="review-text">"O show mais alto que já vi na vida e o melhor também. Fui com meu pai e os dois saímos roucos. Memória pra vida toda."</p>
+        <div class="reviewer">Bruno K. · Porto Alegre</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKETS -->
+  <section class="tickets" id="ingressos">
+    <p class="section-tag" style="color:var(--yellow);">// Garanta o seu lugar</p>
+    <h2>Ingressos</h2>
+    <p class="sub">⚡ Estoque limitado — não deixe pra depois ⚡</p>
+    <div class="ticket-plans">
+      <div class="ticket-card">
+        <div class="ticket-tier">Pista</div>
+        <div class="ticket-price"><sup>R$</sup>390</div>
+        <div class="ticket-period">por pessoa</div>
+        <ul class="ticket-perks">
+          <li>Acesso à pista geral</li>
+          <li>Entrada padrão</li>
+          <li>Meia entrada disponível</li>
+        </ul>
+        <a href="#" class="btn-rock btn-outline-rock" style="animation:none;opacity:1;margin-top:0;padding:0.8rem 1.5rem;">Comprar</a>
+      </div>
+      <div class="ticket-card featured">
+        <div class="ticket-tier">⚡ Pista Front</div>
+        <div class="ticket-price"><sup>R$</sup>650</div>
+        <div class="ticket-period">por pessoa</div>
+        <ul class="ticket-perks">
+          <li>Área frontal ao palco</li>
+          <li>Acesso prioritário</li>
+          <li>Kit exclusivo AC/DC</li>
+          <li>Vista privilegiada</li>
+        </ul>
+        <a href="#" class="btn-rock" style="animation:none;opacity:1;margin-top:0;padding:0.8rem 1.5rem;">Comprar</a>
+      </div>
+      <div class="ticket-card">
+        <div class="ticket-tier">Camarote VIP</div>
+        <div class="ticket-price"><sup>R$</sup>1200</div>
+        <div class="ticket-period">por pessoa</div>
+        <ul class="ticket-perks">
+          <li>Vista panorâmica</li>
+          <li>Open bar premium</li>
+          <li>Mesa reservada</li>
+          <li>Credencial backstage</li>
+        </ul>
+        <a href="#" class="btn-rock btn-outline-rock" style="animation:none;opacity:1;margin-top:0;padding:0.8rem 1.5rem;">Comprar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Não perca<br>essa chance</h2>
+    <p>Cadastre seu e-mail e receba alertas antes que esgote</p>
+    <div class="cta-form">
+      <input type="text" placeholder="Seu nome">
+      <input type="email" placeholder="Seu melhor e-mail">
+      <a href="#" class="btn-rock btn-black">⚡ Quero avisos</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">AC/DC</div>
+    <p>PWR UP World Tour · Brasil 2025</p>
+    <p style="margin-top:0.4rem;">© 2025 · Todos os direitos reservados · Produção: T4F Entretenimento</p>
+  </footer>
+
+</body>
+</html>

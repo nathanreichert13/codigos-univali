@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Padaria da Tia Rosa</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #fff8f0; color: #333; margin: 0; padding: 0; }
+    header { background-color: #8b4513; color: white; text-align: center; padding: 30px; }
+    header p { font-style: italic; font-size: 1.1em; }
+    nav { background-color: #a0522d; text-align: center; padding: 10px; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    section { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+    h2 { color: #8b4513; border-bottom: 2px solid #8b4513; padding-bottom: 5px; }
+    .produtos { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+    .produto { background: white; border: 1px solid #ddd; padding: 15px; width: 200px; text-align: center; }
+    .produto-img { width: 100%; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3.5em; background-color: #fff0e0; border-radius: 4px; }
+    .produto .slogan-produto { font-style: italic; color: #a0522d; font-size: 0.85em; margin-top: 8px; border-top: 1px dashed #ddd; padding-top: 8px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th { background-color: #8b4513; color: white; padding: 10px; }
+    td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    tr:nth-child(even) { background-color: #fff0e0; }
+    .funcionario { background: white; border-left: 4px solid #8b4513; padding: 12px; margin-bottom: 12px; }
+    .contato-info p { margin: 6px 0; }
+    footer { background-color: #8b4513; color: white; text-align: center; padding: 15px; margin-top: 40px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Padaria Artesanal da Tia Rosa</h1>
+  <p>"Feito com farinha, amor e um toque de magia — porque pão bom é pão feito à mão."</p>
+  <small><i>Slogan criado com auxílio de Inteligência Artificial</i></small>
+</header>
+
+<nav>
+  <a href="#sobre">Sobre</a>
+  <a href="#produtos">Produtos</a>
+  <a href="#precos">Preços</a>
+  <a href="#equipe">Equipe</a>
+  <a href="#contato">Contato</a>
+</nav>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <h2>Sobre a Padaria</h2>
+  <p>A Padaria da Tia Rosa existe desde 1995, fundada por Rosa Maria Oliveira com receitas de família passadas de geração em geração. Tudo é feito artesanalmente, sem conservantes, com ingredientes frescos todos os dias. Nossa missão é levar sabor e carinho à mesa de cada cliente.</p>
+</section>
+
+<!-- PRODUTOS -->
+<section id="produtos">
+  <h2>Nossos Produtos</h2>
+  <div class="produtos">
+
+    <div class="produto">
+      <div class="produto-img">🍞</div>
+      <h3>Pão Francês</h3>
+      <p>Crocante por fora, macio por dentro. Fermentação natural de 12 horas.</p>
+      <p class="slogan-produto">"Simples, clássico e irresistível — o pão de todo dia."</p>
+    </div>
+
+    <div class="produto">
+      <div class="produto-img">🧀</div>
+      <h3>Pão de Queijo</h3>
+      <p>Receita mineira original, com queijo minas curado artesanal.</p>
+      <p class="slogan-produto">"Um pedacinho de Minas em cada mordida."</p>
+    </div>
+
+    <div class="produto">
+      <div class="produto-img">🥐</div>
+      <h3>Croissant</h3>
+      <p>Massa folhada com manteiga, assado fresquinho toda manhã.</p>
+      <p class="slogan-produto">"Camada por camada, um sabor que conquista."</p>
+    </div>
+
+    <div class="produto">
+      <div class="produto-img">🎂</div>
+      <h3>Bolo Caseiro</h3>
+      <p>Bolo de cenoura com cobertura de chocolate, receita da vovó.</p>
+      <p class="slogan-produto">"O gostinho da infância que nunca sai de moda."</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- TABELA DE PREÇOS -->
+<section id="precos">
+  <h2>Tabela de Preços</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Produto</th>
+        <th>Unidade</th>
+        <th>Preço</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Pão Francês</td><td>Unidade (50g)</td><td>R$ 1,20</td></tr>
+      <tr><td>Pão de Queijo</td><td>Unidade (80g)</td><td>R$ 4,50</td></tr>
+      <tr><td>Croissant</td><td>Unidade (90g)</td><td>R$ 7,90</td></tr>
+      <tr><td>Bolo Caseiro</td><td>Fatia (100g)</td><td>R$ 6,00</td></tr>
+      <tr><td>Pão de Forma Integral</td><td>Pacote (500g)</td><td>R$ 14,00</td></tr>
+      <tr><td>Café Coado</td><td>Xícara (200ml)</td><td>R$ 4,00</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- EQUIPE -->
+<section id="equipe">
+  <h2>Nossa Equipe</h2>
+
+  <div class="funcionario">
+    <strong>Rosa Maria Oliveira</strong> — Fundadora e Padeira Chefe<br>
+    📞 (47) 99901-1111 &nbsp;|&nbsp; ✉ rosa@padariaarosa.com.br
+  </div>
+
+  <div class="funcionario">
+    <strong>Carlos Eduardo Lima</strong> — Padeiro Artesanal<br>
+    📞 (47) 99901-2222 &nbsp;|&nbsp; ✉ carlos@padariaarosa.com.br
+  </div>
+
+  <div class="funcionario">
+    <strong>Fernanda Souza</strong> — Confeiteira<br>
+    📞 (47) 99901-3333 &nbsp;|&nbsp; ✉ fernanda@padariaarosa.com.br
+  </div>
+
+  <div class="funcionario">
+    <strong>João Pedro Alves</strong> — Atendimento ao Cliente<br>
+    📞 (47) 99901-4444 &nbsp;|&nbsp; ✉ joao@padariaarosa.com.br
+  </div>
+
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <h2>Contato</h2>
+  <div class="contato-info">
+    <p>📍 <strong>Endereço:</strong> Rua das Flores, 210 – Centro, Blumenau/SC</p>
+    <p>📞 <strong>Telefone:</strong> (47) 3322-5678</p>
+    <p>✉ <strong>E-mail:</strong> contato@padariaarosa.com.br</p>
+    <p>🕐 <strong>Horário:</strong> Segunda a Sábado das 06h00 às 20h00 | Domingo das 06h00 às 12h00</p>
+    <p>📱 <strong>Instagram:</strong> @padariaarosa</p>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2024 Padaria Artesanal da Tia Rosa — Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>

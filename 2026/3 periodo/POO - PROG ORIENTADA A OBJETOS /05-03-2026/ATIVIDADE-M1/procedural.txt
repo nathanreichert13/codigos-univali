@@ -1,0 +1,19 @@
+PARTE 1 - SOLUÇÃO COM O PARADIGMA PROCEDURAL
+
+No paradigma procedural, o programa é organizado em uma sequência
+de passos executados em ordem.
+
+Primeiro, o sistema solicita ao usuário o peso (em kg) e a altura
+(em metros). Esses valores são armazenados em variáveis.
+
+Depois disso, o programa calcula o Índice de Massa Corporal (IMC)
+utilizando a fórmula: IMC = peso / (altura * altura).
+
+Após calcular o IMC, o programa usa estruturas condicionais
+(if e else if) para verificar em qual faixa o valor se encontra.
+
+Cada faixa corresponde a uma classificação, como abaixo do peso,
+peso normal, sobrepeso ou obesidade.
+
+Por fim, o sistema exibe na tela o valor do IMC e a classificação
+correspondente ao usuário.

@@ -1,0 +1,263 @@
+# ============================================================
+#  .gitignore para Projetos de Faculdade
+#  Cobre: C, C++, Java, Python, JavaScript/Node, Web, Arduino,
+#         IDEs, SO e arquivos temporários gerais
+# ============================================================
+
+
+# ------------------------------------------------------------
+# C / C++
+# ------------------------------------------------------------
+*.o
+*.obj
+*.out
+*.exe
+*.dll
+*.so
+*.a
+*.lib
+*.elf
+*.hex
+*.map
+*.d
+
+# Diretórios de build comuns
+build/
+bin/
+obj/
+dist/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile.in
+*.cmake
+
+
+# ------------------------------------------------------------
+# Java
+# ------------------------------------------------------------
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+
+# Maven
+target/
+.mvn/
+!.mvn/wrapper/maven-wrapper.jar
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.bak
+release.properties
+
+# Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/gradle/
+!**/src/test/**/gradle/
+hs_err_pid*
+replay_pid*
+
+
+# ------------------------------------------------------------
+# Python
+# ------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.pdb
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+ENV/
+.env
+*.egg
+*.egg-info/
+dist/
+develop-eggs/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Pytest / Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+
+# ------------------------------------------------------------
+# JavaScript / Node.js / Web
+# ------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# Bundles e builds
+dist/
+.next/
+.nuxt/
+.svelte-kit/
+out/
+.cache/
+.parcel-cache/
+.vite/
+
+# Env local (nunca commitar segredos!)
+.env
+.env.local
+.env.*.local
+
+
+# ------------------------------------------------------------
+# Arduino / Embedded
+# ------------------------------------------------------------
+*.ino.elf
+*.ino.hex
+*.ino.bin
+build-*/
+
+
+# ------------------------------------------------------------
+# Arquivos de banco de dados / dados locais
+# ------------------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+*.sql.bak
+
+
+# ------------------------------------------------------------
+# IDEs e Editores
+# ------------------------------------------------------------
+
+# VS Code
+.vscode/
+!.vscode/extensions.json   # pode manter para recomendar extensões
+
+# IntelliJ / CLion / PyCharm / Android Studio
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+
+# Dev Containers
+.devcontainer/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim / Neovim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*#
+.\#*
+
+
+# ------------------------------------------------------------
+# Sistema Operacional
+# ------------------------------------------------------------
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+.fuse_hidden*
+.Trash-*
+.nfs*
+
+
+# ------------------------------------------------------------
+# Logs e temporários gerais
+# ------------------------------------------------------------
+*.log
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+*.rej
+logs/
+tmp/
+temp/
+
+
+# ------------------------------------------------------------
+# Documentos gerados / compilados (LaTeX, etc.)
+# ------------------------------------------------------------
+*.aux
+*.fdb_latexmk
+*.fls
+*.gz
+*.out
+*.toc
+*.synctex.gz
+*.pdf          # remova esta linha se quiser versionar PDFs de entrega
+
+
+# ------------------------------------------------------------
+# Arquivos grandes / desnecessários para o repositório
+# ------------------------------------------------------------
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+*.iso
+*.img

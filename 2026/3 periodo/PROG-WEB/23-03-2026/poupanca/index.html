@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Poupança</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input {
+            display: block;
+            margin-bottom: 10px;
+            width: 90%;
+            padding: 8px;
+        }
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Planejar Poupança</h1>
+        
+        <label>Objetivo Financeiro (R$):</label>
+        <input type="number" id="objetivo" placeholder="Ex: 5000" required>
+        
+        <label>Valor Inicial (R$):</label>
+        <input type="number" id="inicial" placeholder="Ex: 1000" required>
+        
+        <label>Depósito Mensal (R$):</label>
+        <input type="number" id="mensal" placeholder="Ex: 200" required>
+        
+        <label>Juros Mensal (%):</label>
+        <input type="number" id="juros" placeholder="Ex: 0.5" required>
+        
+        <button onclick="calcular()">Calcular</button>
+        <button onclick="limpar()">Limpar</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script src="poupanca.js"></script>
+</body>
+</html>
